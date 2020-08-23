@@ -28,24 +28,24 @@ extension ProgressColor {
 
   var backColor: Color {
     switch self {
-    case .red: return ProgressColor.backRed
-    case .green: return ProgressColor.backGreen
-    case .blue: return ProgressColor.backBlue
+    case .red: return .red
+    case .green: return .green
+    case .blue: return .blue
     }
   }
 
   // Red
   static let darkRed = Color(decimalRGB: (224, 0, 21))
   static let lightRed = Color(decimalRGB: (255, 50, 137))
-  static let backRed = Color(decimalRGB: (34, 0, 3))
+//  static let backRed = Color(decimalRGB: (34, 0, 3))
   // Green
   static let darkGreen = Color(decimalRGB: (53, 220, 0))
   static let lightGreen = Color(decimalRGB: (184, 255, 0))
-  static let backGreen = Color(decimalRGB: (8, 33, 0))
+//  static let backGreen = Color(decimalRGB: (8, 33, 0))
   //Blue
   static let darkBlue = Color(decimalRGB: (0, 186, 225))
   static let lightBlue = Color(decimalRGB: (5, 251, 207))
-  static let backBlue = Color(decimalRGB: (0, 28, 34))
+//  static let backBlue = Color(decimalRGB: (0, 28, 34))
 }
 
 struct ProgressColor_Previews: PreviewProvider {
@@ -60,7 +60,7 @@ struct ProgressColor_Previews: PreviewProvider {
           Circle()
             .foregroundColor(content.colors[1])
         }
-        .background(content.backColor)
+        .background(content.backColor.opacity(0.15))
       }
     }
     .environment(\.colorScheme, .dark)
