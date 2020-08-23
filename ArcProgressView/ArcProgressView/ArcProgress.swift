@@ -11,7 +11,7 @@
 import SwiftUI
 
 struct ArcProgress: View {
-  let progress: Double
+  @Binding var progress: Double
   let colors: [Color]
 
   let arcSize: CGFloat = 0.7
@@ -24,8 +24,8 @@ struct ArcProgress: View {
     return formatter
   }()
 
-  init(progress: Double, gradientColors: [Color]) {
-    self.progress = progress
+  init(progress: Binding<Double>, gradientColors: [Color]) {
+    self._progress = progress
     self.colors = gradientColors
   }
 
@@ -78,19 +78,34 @@ struct ArcProgress: View {
 
 struct ArcProgress_Previews: PreviewProvider {
   static var previews: some View {
-    VStack {
-      ArcProgress(progress: 0.3, gradientColors: [.blue, .green])
+    ArcProgressPreview()
+  }
+}
+
+struct ArcProgressPreview: View {
+  @State var progress: Double = 0
+
+  var body: some View {
+    VStack(spacing: 50) {
+      ArcProgress(progress: $progress, gradientColors: [.blue, .green])
         .padding()
         .background(Color(UIColor.systemBackground))
         .cornerRadius(30)
         .shadow(radius: 10)
 
-      ArcProgress(progress: 0.3, gradientColors: [.blue, .green])
+      ArcProgress(progress: $progress, gradientColors: [.blue, .green])
         .padding()
         .background(Color(UIColor.systemBackground))
         .cornerRadius(30)
         .shadow(radius: 10)
         .environment(\.colorScheme, .dark)
+
+      Button(action: {
+        withAnimation { self.progress += 0.1 }
+      }) {
+        Image(systemName: "chevron.up.circle.fill")
+          .font(.largeTitle)
+      }
     }
     .padding()
   }
