@@ -110,7 +110,7 @@ struct RingProgress: View {
   }
 }
 
-struct ArcProgress_Previews: PreviewProvider {
+struct RingProgress_Previews: PreviewProvider {
   static let colorTheme: ProgressColor = .green
   static var previews: some View {
     VStack {
