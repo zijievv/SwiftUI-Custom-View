@@ -21,12 +21,12 @@ struct ContentView: View {
         Text(self.percentageFormatter.string(from: self.progress as NSNumber)!)
           .font(.system(size: 60, weight: .bold, design: .rounded))
 
-        ArcProgress(progress: progress,
-                    gradientColors: colorTheme.colors,
-                    backgroundCircleColor: colorTheme.backColor,
-                    lineWidth: 50,
-                    startAngle: 0.degrees,
-                    clockwise: false)
+        RingProgress(progress: progress,
+                     gradientColors: colorTheme.colors,
+                     backgroundCircleColor: colorTheme.backColor,
+                     lineWidth: 50,
+                     startAngle: 0.degrees,
+                     clockwise: false)
           .frame(height: 350, alignment: .center)
 
         HStack(spacing: 30) {

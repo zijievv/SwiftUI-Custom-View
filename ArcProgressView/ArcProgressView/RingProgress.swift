@@ -1,5 +1,5 @@
 //
-//  ArcProgress.swift
+//  RingProgress.swift
 //  ArcProgressView
 //
 //  Created by zijie vv on 22/08/2020.
@@ -10,7 +10,7 @@
 
 import SwiftUI
 
-struct ArcProgress: View {
+struct RingProgress: View {
   let progress: Double
   let colors: [Color]
   let backColor: Color
@@ -114,12 +114,12 @@ struct ArcProgress_Previews: PreviewProvider {
   static let colorTheme: ProgressColor = .green
   static var previews: some View {
     VStack {
-      ArcProgress(progress: 1.1,
-                  gradientColors: colorTheme.colors,
-                  backgroundCircleColor: colorTheme.backColor,
-                  lineWidth: 50,
-                  startAngle: 0.degrees,
-                  clockwise: false)
+      RingProgress(progress: 1.1,
+                   gradientColors: colorTheme.colors,
+                   backgroundCircleColor: colorTheme.backColor,
+                   lineWidth: 50,
+                   startAngle: 0.degrees,
+                   clockwise: false)
 //        .frame(width: 110, alignment: .center)
     }
     .environment(\.colorScheme, .dark)
