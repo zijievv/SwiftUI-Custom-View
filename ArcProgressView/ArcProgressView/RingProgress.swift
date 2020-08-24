@@ -49,7 +49,7 @@ struct RingProgress: View {
           .stroke(self.strokeGradient, style: self.strokeStyle)
 
         self.endCover(with: geometry)
-          .opacity(self.progress > 0.6 ? 1 : 0)
+          .opacity(self.progress > 0.5 ? 1 : 0)
       }
       .padding(self.lineWidth / 2)
     }
@@ -89,6 +89,7 @@ struct RingProgress: View {
 
     return Group {
       Circle()
+        .trim(from: 0.5, to: 1)
         .fill(colors[1])
         .frame(width: shadowCircleSide, height: shadowCircleSide)
         .opacity(0.6)
@@ -98,8 +99,10 @@ struct RingProgress: View {
                 y: -shadowCircleSide / 2 * offsetRatio)
 
       Circle()
+        .trim(from: 0.2, to: 0.8)
         .fill(colors[1])
         .frame(width: lineWidth, height: lineWidth)
+        .rotationEffect(90.degrees)
     }
     .offset(x: -radius, y: 0)
     .rotationEffect(rotation)
@@ -110,15 +113,15 @@ struct RingProgress_Previews: PreviewProvider {
   static let colorTheme: ProgressColor = .green
   static var previews: some View {
     VStack {
-      RingProgress(progress: 0.7,
+      RingProgress(progress: 0.75,
                    gradientColors: colorTheme.colors,
                    backgroundCircleColor: colorTheme.backColor,
                    lineWidth: 50,
                    startAngle: 0.degrees,
                    clockwise: false)
-//        .frame(width: 110, alignment: .center)
+        .frame(width: 200, alignment: .center)
     }
     .background(Color(UIColor.systemBackground).edgesIgnoringSafeArea(.all))
-//    .environment(\.colorScheme, .dark)
+    .environment(\.colorScheme, .dark)
   }
 }

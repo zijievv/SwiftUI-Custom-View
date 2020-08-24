@@ -12,7 +12,7 @@ import SwiftUI
 
 struct ActivityRings: View {
   let progresses: [Double]
-  let lineWidthRatio: CGFloat = 0.1
+  let lineWidthRatio: CGFloat = 0.12
   let spaceRatio: CGFloat = 0.05
 
   private static let red = ProgressColor.red
@@ -58,7 +58,7 @@ struct ActivityRings_Previews: PreviewProvider {
 }
 
 struct ActivityRingsPreview: View {
-  @State var progresses: [Double] = [0, 0, 0]
+  @State var progresses: [Double] = [1,1,1]
 
   private let percentageFormatter: NumberFormatter = {
     let formatter = NumberFormatter()
