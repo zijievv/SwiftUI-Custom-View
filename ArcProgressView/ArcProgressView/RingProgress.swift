@@ -82,13 +82,10 @@ struct RingProgress: View {
     let radius = (
       min(geometry.size.width, geometry.size.height) - lineWidth
     ) / 2
-
-    let angleRadians = CGFloat(Double.pi * 2 * progress)
-    let shadowAngleRadians = clockwise ?
-      angleRadians - CGFloat.pi / 2 : angleRadians + CGFloat.pi / 2
     let shadowCircleSide = lineWidth * 0.75
     let shadowRatio: CGFloat = 0.1
     let offsetRatio: CGFloat = 0.5
+    let rotation: Angle = (progress * 360).degrees - 180.degrees
 
     return Group {
       Circle()
@@ -97,15 +94,15 @@ struct RingProgress: View {
         .opacity(0.6)
         .shadow(color: .black,
                 radius: shadowCircleSide * shadowRatio,
-                x: shadowCircleSide / 2 * cos(shadowAngleRadians) * offsetRatio,
-                y: shadowCircleSide / 2 * sin(shadowAngleRadians) * offsetRatio)
+                x: 0,
+                y: -shadowCircleSide / 2 * offsetRatio)
 
       Circle()
         .fill(colors[1])
         .frame(width: lineWidth, height: lineWidth)
     }
-    .offset(x: radius * cos(angleRadians),
-            y: radius * sin(angleRadians))
+    .offset(x: -radius, y: 0)
+    .rotationEffect(rotation)
   }
 }
 
@@ -113,7 +110,7 @@ struct RingProgress_Previews: PreviewProvider {
   static let colorTheme: ProgressColor = .green
   static var previews: some View {
     VStack {
-      RingProgress(progress: 1.1,
+      RingProgress(progress: 0.7,
                    gradientColors: colorTheme.colors,
                    backgroundCircleColor: colorTheme.backColor,
                    lineWidth: 50,
@@ -122,6 +119,6 @@ struct RingProgress_Previews: PreviewProvider {
 //        .frame(width: 110, alignment: .center)
     }
     .background(Color(UIColor.systemBackground).edgesIgnoringSafeArea(.all))
-    .environment(\.colorScheme, .dark)
+//    .environment(\.colorScheme, .dark)
   }
 }

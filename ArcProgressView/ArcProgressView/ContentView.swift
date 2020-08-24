@@ -18,6 +18,7 @@ struct ContentView: View {
   var body: some View {
     Group {
       VStack(spacing: 30) {
+        Spacer()
         Text(self.percentageFormatter.string(from: self.progress as NSNumber)!)
           .font(.system(size: 60, weight: .bold, design: .rounded))
 
@@ -40,9 +41,12 @@ struct ContentView: View {
               .font(.system(size: 60, weight: .bold, design: .rounded))
           }
         }
+
+        Spacer()
       }
       .padding()
     }
+    .background(Color(UIColor.systemBackground).edgesIgnoringSafeArea(.all))
   }
 
   private let percentageFormatter: NumberFormatter = {
@@ -63,7 +67,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
     ContentView()
-      .background(Color(UIColor.systemBackground).edgesIgnoringSafeArea(.all))
       .environment(\.colorScheme, .dark)
   }
 }
