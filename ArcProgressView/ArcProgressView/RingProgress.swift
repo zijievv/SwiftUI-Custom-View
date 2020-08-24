@@ -55,7 +55,6 @@ struct RingProgress: View {
     }
     .rotation3DEffect(self.clockwise ? 180.degrees : 0.degrees, axis: (1, 0, 0))
     .rotationEffect(self.startAngle)
-    .background(Color(UIColor.systemBackground).edgesIgnoringSafeArea(.all))
   }
 
   private var strokeStyle: StrokeStyle {
@@ -122,6 +121,7 @@ struct RingProgress_Previews: PreviewProvider {
                    clockwise: false)
 //        .frame(width: 110, alignment: .center)
     }
+    .background(Color(UIColor.systemBackground).edgesIgnoringSafeArea(.all))
     .environment(\.colorScheme, .dark)
   }
 }
