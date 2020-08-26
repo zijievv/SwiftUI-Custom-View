@@ -64,7 +64,8 @@ struct RoundedHistogram<T: LabelValuePair>: View {
   }
 
   private func fontSize(with geometry: GeometryProxy) -> CGFloat {
-    geometry.size.width / CGFloat(self.data.count) * fontSizeRatio
+    min(geometry.size.width / CGFloat(self.data.count) * fontSizeRatio,
+        rowHeight(with: geometry))
   }
 
   private func labelWidth(with geometry: GeometryProxy) -> CGFloat {
@@ -107,11 +108,20 @@ struct HBar<T: LabelValuePair>: View {
 struct RoundedHistogram_Previews: PreviewProvider {
   static var previews: some View {
     GeometryReader { _ in
-      VStack {
+      VStack(spacing: 20) {
         RoundedHistogram(data: testData, gradient: Gradient(colors: colors))
-          .frame(height: 400, alignment: .center)
-          .padding()
+          .frame(height: 200, alignment: .center)
+
+        RoundedHistogram(data: testData, gradient: Gradient(colors: reds))
+          .frame(height: 170, alignment: .center)
+
+        RoundedHistogram(data: testData, gradient: Gradient(colors: greens))
+          .frame(height: 130, alignment: .center)
+
+        RoundedHistogram(data: testData, gradient: Gradient(colors: blues))
+          .frame(height: 100, alignment: .center)
       }
+      .padding()
     }
     .background(Color(UIColor.systemBackground).edgesIgnoringSafeArea(.all))
     .environment(\.colorScheme, .dark)
