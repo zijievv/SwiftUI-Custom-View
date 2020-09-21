@@ -11,31 +11,31 @@
 import SwiftUI
 
 extension Double {
-  var degrees: Angle { Angle.degrees(self) }
-  var radians: Angle { Angle.radians(self) }
-  var cgFloat: CGFloat { CGFloat(self) }
+    var degrees: Angle { Angle.degrees(self) }
+    var radians: Angle { Angle.radians(self) }
+    var cgFloat: CGFloat { CGFloat(self) }
 }
 
 extension CGFloat {
-  var degrees: Angle { Angle.degrees(Double(self)) }
-  var radians: Angle { Angle.radians(Double(self)) }
+    var degrees: Angle { Angle.degrees(Double(self)) }
+    var radians: Angle { Angle.radians(Double(self)) }
 }
 
 extension Int {
-  var degrees: Angle { Angle.degrees(Double(self)) }
-  var radians: Angle { Angle.radians(Double(self)) }
-  var cgFloat: CGFloat { CGFloat(self) }
+    var degrees: Angle { Angle.degrees(Double(self)) }
+    var radians: Angle { Angle.radians(Double(self)) }
+    var cgFloat: CGFloat { CGFloat(self) }
 }
 
 extension Angle {
-  var cgRadians: CGFloat { CGFloat(radians) }
-  var cgDegrees: CGFloat { CGFloat(degrees) }
+    var cgRadians: CGFloat { CGFloat(radians) }
+    var cgDegrees: CGFloat { CGFloat(degrees) }
 }
 
 extension Color {
-  public init(decimalRGB: (r: Int, g: Int, b: Int)) {
-    self.init(red: Double(decimalRGB.r)/255,
-              green: Double(decimalRGB.g)/255,
-              blue: Double(decimalRGB.b)/255)
-  }
+    public init(decimalRGB: (r: Int, g: Int, b: Int)) {
+        self.init(red: Double(decimalRGB.r)/255,
+                  green: Double(decimalRGB.g)/255,
+                  blue: Double(decimalRGB.b)/255)
+    }
 }
