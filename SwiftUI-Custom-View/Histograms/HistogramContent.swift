@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  HistogramContent.swift
 //  Histograms
 //
 //  Created by zijie vv on 27/08/2020.
@@ -10,14 +10,14 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct HistogramContent: View {
     var body: some View {
         Text("Hello, World!")
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct HistogramContent_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        HistogramContent()
     }
 }

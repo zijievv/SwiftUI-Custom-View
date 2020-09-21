@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  ArcProgressContentView.swift
 //  ArcProgressView
 //
 //  Created by zijie vv on 22/08/2020.
@@ -10,7 +10,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ArcProgressContentView: View {
     @State var progress: Double = 0
 
     let colorTheme = ProgressColor.green
@@ -64,9 +64,9 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct ArcProgressContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ArcProgressContentView()
             .environment(\.colorScheme, .dark)
     }
 }
