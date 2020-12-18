@@ -129,37 +129,37 @@ struct RoundedHistogram_Previews: PreviewProvider {
 }
 
 #if DEBUG
-    struct Company {
-        var name: String
-        var marketValue: Double
-        let id = UUID()
+struct Company {
+    var name: String
+    var marketValue: Double
+    let id = UUID()
 
-        init(_ name: String, _ marketValue: Double) {
-            self.name = name
-            self.marketValue = marketValue
-        }
+    init(_ name: String, _ marketValue: Double) {
+        self.name = name
+        self.marketValue = marketValue
     }
+}
 
-    extension Company: LabelValuePair {
-        var label: String { name }
-        var value: Double { marketValue }
-    }
+extension Company: LabelValuePair {
+    var label: String { name }
+    var value: Double { marketValue }
+}
 
-    let testData: [Company] = [
-        Company("Apple", 19000),
-        Company("MicroSoft", 16100),
-        Company("Amazon", 15900),
-        Company("Alphabet", 10200),
-        Company("Facebook", 7647),
-        Company("Alibaba", 6807),
-        Company("Tencent", 6360),
-    ]
+let testData: [Company] = [
+    Company("Apple", 19000),
+    Company("MicroSoft", 16100),
+    Company("Amazon", 15900),
+    Company("Alphabet", 10200),
+    Company("Facebook", 7647),
+    Company("Alibaba", 6807),
+    Company("Tencent", 6360),
+]
 
-    let colors: [Color] = [.purple, .blue, .green, .yellow]
-    let reds = [Color(red: 224/255, green: 0, blue: 21/255),
-                Color(red: 1, green: 50/255, blue: 137/255)]
-    let greens = [Color(red: 53/255, green: 220/255, blue: 0/255),
-                  Color(red: 184/255, green: 255/255, blue: 0/255)]
-    let blues = [Color(red: 0/255, green: 186/255, blue: 255/255),
-                 Color(red: 5/255, green: 251/255, blue: 207/255)]
+let colors: [Color] = [.purple, .blue, .green, .yellow]
+let reds = [Color(red: 224/255, green: 0, blue: 21/255),
+            Color(red: 1, green: 50/255, blue: 137/255)]
+let greens = [Color(red: 53/255, green: 220/255, blue: 0/255),
+              Color(red: 184/255, green: 255/255, blue: 0/255)]
+let blues = [Color(red: 0/255, green: 186/255, blue: 255/255),
+             Color(red: 5/255, green: 251/255, blue: 207/255)]
 #endif
