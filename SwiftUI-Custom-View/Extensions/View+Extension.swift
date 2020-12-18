@@ -14,4 +14,9 @@ extension View {
     public func squareFrame(_ size: CGFloat, alignment: Alignment = .center) -> some View {
         self.frame(width: size, height: size, alignment: alignment)
     }
+
+    func foreground<S: View>(_ content: S) -> some View {
+        self.foregroundColor(.clear)
+            .overlay(content.mask(self))
+    }
 }
