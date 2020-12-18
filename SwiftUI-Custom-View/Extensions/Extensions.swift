@@ -27,11 +27,6 @@ extension Int {
     var cgFloat: CGFloat { CGFloat(self) }
 }
 
-extension Angle {
-    var cgRadians: CGFloat { CGFloat(radians) }
-    var cgDegrees: CGFloat { CGFloat(degrees) }
-}
-
 extension Color {
     public init(decimalRGB: (r: Int, g: Int, b: Int)) {
         self.init(red: Double(decimalRGB.r)/255,
