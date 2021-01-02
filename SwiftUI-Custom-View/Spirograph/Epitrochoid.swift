@@ -1,5 +1,5 @@
 //
-//  Hypotrochoid.swift
+//  Epitrochoid.swift
 //  SwiftUI-Custom-View
 //
 //  Created by zijie vv on 02/01/2021.
@@ -10,18 +10,18 @@
 
 import SwiftUI
 
-struct Hypotrochoid: Shape {
+struct Epitrochoid: Shape {
     let outerRadius: Double
     let innerRadius: Double
     let distance: Double
 
-    // x(theta) = (R - r) cos(theta) + d cos((R -r) / r * theta)
-    // y(theta) = (R - r) sin(theta) - d sin((R -r) / r * theta)
+    // x(theta) = (R + r) cos(theta) - d cos((R + r) / r * theta)
+    // y(theta) = (R + r) sin(theta) - d sin((R + r) / r * theta)
     func path(in rect: CGRect) -> Path {
         var path = Path()
 
         let size = Double(rect.minimum)
-        let ratio = size / 2 / (outerRadius + distance - innerRadius)
+        let ratio = size / 2 / (outerRadius + innerRadius + distance)
         let outerR = outerRadius * ratio
         let innerR = innerRadius * ratio
         let length = distance * ratio
@@ -30,15 +30,16 @@ struct Hypotrochoid: Shape {
         let maxT: Int = 36000
         var curveClosed = false
 
-        let x0: Double = Double(rect.width)
+        let x0: Double = Double(rect.width / 2) + outerR + innerR - length
         let y0: Double = Double(rect.height / 2)
+
         path.move(to: .init(x: x0, y: y0))
 
         while angleDegree < maxT, !curveClosed {
             let theta: Double = angleDegree.degrees.radians
-            let component = ((outerR - innerR) / innerR) * theta
-            let x = (outerR - innerR) * cos(theta) + length * cos(component) + Double(rect.midX)
-            let y = (outerR - innerR) * sin(theta) - length * sin(component) + Double(rect.midY)
+            let component = ((outerR + innerR) / innerR) * theta
+            let x = (outerR + innerR) * cos(theta) - length * cos(component) + Double(rect.midX)
+            let y = (outerR + innerR) * sin(theta) - length * sin(component) + Double(rect.midY)
 
             path.addLine(to: .init(x: x, y: y))
 
@@ -53,13 +54,13 @@ struct Hypotrochoid: Shape {
     }
 }
 
-struct Hypotrochoid_Previews: PreviewProvider {
+struct Epitrochoid_Previews: PreviewProvider {
     static var previews: some View {
         ZStack {
             Circle()
                 .foregroundColor(.white)
                 .shadow(radius: 5)
-            Hypotrochoid(outerRadius: 150, innerRadius: 100, distance: 50)
+            Epitrochoid(outerRadius: 70, innerRadius: 30, distance: 21)
                 .stroke(lineWidth: 1)
                 .rotation(-90.degrees)
                 .padding(10)
