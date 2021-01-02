@@ -12,7 +12,6 @@ import SwiftUI
 
 final class PieChartViewModel: ObservableObject {
     @Published var sectors: [SectorShapeModel]
-    @Published var percents: [Double]
 
     init(sectors: [SectorShapeModel]) {
         self.sectors = sectors
@@ -25,13 +24,14 @@ final class PieChartViewModel: ObservableObject {
         }
 
         let sum: Double = accumulations.last!
-        self.percents = values.map { $0 / sum }
+        let percents = values.map { $0 / sum }
 
         let angles: [Angle] = accumulations.map { ($0 / sum * 360).degrees }
 
         for i in 0..<self.sectors.count {
             self.sectors[i].startAngle = angles[i]
             self.sectors[i].endAngle = angles[i+1]
+            self.sectors[i].percent = percents[i]
         }
     }
 }

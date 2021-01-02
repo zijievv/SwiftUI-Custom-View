@@ -19,6 +19,7 @@ struct SectorShapeModel: Identifiable {
 
     var startAngle: Angle = .zero
     var endAngle: Angle = .zero
+    var percent: Double = 0
     var color: Color
 
     init(label: String, value: Double, color: Color) {
